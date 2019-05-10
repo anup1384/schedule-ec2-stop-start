@@ -1,0 +1,16 @@
+- name: find instance ID based on private IP
+  shell: aws ec2 describe-instances --filter Name=private-ip-address,Values={{ solo_ip }} | jq -r '.Reservations[].Instances[] | .InstanceId'
+  register: instance_id
+
+- debug:
+    msg: "{{ instance_id }}"
+
+- name: Print Instance ID
+  debug:
+    msg: "{{ instance_id.stdout }}"
+
+- name: Stop instance
+  ec2:
+    instance_id: "{{ instance_id.stdout  }}"
+    state: stopped
+

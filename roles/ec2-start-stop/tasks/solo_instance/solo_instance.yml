@@ -1,0 +1,8 @@
+- include: solo_start.yml
+  tags:
+    - start
+- include: solo_stop.yml
+  tags:
+    - stop
+
+

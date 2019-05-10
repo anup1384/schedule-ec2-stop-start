@@ -1,0 +1,6 @@
+- hosts: localhost
+  connection: local
+  environment:
+    EC2_REGION: us-east-1
+  roles:
+  - {role: ec2-start-stop}

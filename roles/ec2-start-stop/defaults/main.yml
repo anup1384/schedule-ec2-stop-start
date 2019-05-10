@@ -1,0 +1,5 @@
+---
+# defaults file for start_stop_ec2
+
+action: "start"
+roles_directory: roles

@@ -1,0 +1,21 @@
+---
+# tasks file for start_stop_ec2
+
+- name: start & stop solo instance
+  include: solo_instance/solo_instance.yml
+  when: solo_instance is defined 
+
+- name: Get instance details
+  include: get_instance_details.yml
+  tags:
+    - details
+
+
+- name: Start instances
+  include: start/start_instances.yml
+  when: action == "start"
+
+
+- name: Stop instances
+  include: stop/stop_instances.yml
+  when: action == "stop"
